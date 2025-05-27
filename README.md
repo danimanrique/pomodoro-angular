@@ -54,20 +54,20 @@ Una aplicación moderna de temporizador Pomodoro construida con Angular, diseña
 ## 🚀 Instalación
 
 1. Clona el repositorio:
-\`\`\`bash
+```bash
 git clone https://github.com/tu-usuario/pomodoro-timer.git
-\`\`\`
+```
 
 2. Instala las dependencias:
-\`\`\`bash
+```bash
 cd pomodoro-timer
 npm install
-\`\`\`
+```
 
 3. Inicia el servidor de desarrollo:
-\`\`\`bash
+```bash
 ng serve
-\`\`\`
+```
 
 4. Abre tu navegador en `http://localhost:4200`
 
