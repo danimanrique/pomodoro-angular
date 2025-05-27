@@ -1,0 +1,90 @@
+<div class="app-container">
+  <nav class="top-nav">
+    <p-button 
+      label="Tasks" 
+      text="true"
+      (onClick)="toggleTaskModal()" 
+      styleClass="nav-button p-button-text p-button-rounded">
+    </p-button>
+
+    <div class="mode-selector">
+      <div class="desktop-selector">
+        <p-selectButton [options]="[
+          {label: 'Pomodoro', value: 'pomodoro'},
+          {label: 'Short break', value: 'shortBreak'},
+          {label: 'Long break', value: 'longBreak'}
+        ]" [(ngModel)]="currentMode" (onChange)="setMode($event.value)"></p-selectButton>
+      </div>
+      <div class="mobile-selector">
+        <p-dropdown [options]="[
+          {label: 'Pomodoro', value: 'pomodoro'},
+          {label: 'Short break', value: 'shortBreak'},
+          {label: 'Long break', value: 'longBreak'}
+        ]" [(ngModel)]="currentMode" (onChange)="setMode($event.value)">
+        </p-dropdown>
+      </div>
+    </div>
+
+    <div class="right-nav">
+      <p-button 
+        icon="pi pi-palette" 
+        (onClick)="op.toggle($event)"
+        styleClass="theme-button p-button-text p-button-rounded">
+      </p-button>
+      <p-button 
+        icon="pi pi-cog" 
+        (onClick)="toggleSettingsModal()" 
+        styleClass="theme-button p-button-text p-button-rounded">
+      </p-button>
+    </div>
+  </nav>
+
+  <div class="content">
+    <div class="task-prompt" (click)="toggleTaskModal()">
+      <i class="pi pi-plus-circle"></i>
+      Click here to create a task
+    </div>
+    
+    <div class="timer">
+      {{minutes}}:{{seconds < 10 ? '0' : ''}}{{seconds}}
+    </div>
+
+    <div class="controls">
+      <p-button 
+        [label]="isRunning ? 'Pause' : 'Play'"
+        [icon]="isRunning ? 'pi pi-pause' : 'pi pi-play'"
+        (onClick)="toggleTimer()"
+        styleClass="control-button">
+      </p-button>
+
+      <p-button 
+        icon="pi pi-refresh"
+        (onClick)="resetTimer()"
+        styleClass="control-button reset">
+      </p-button>
+    </div>
+  </div>
+
+  <p-overlayPanel #op>
+    <div class="theme-colors">
+      <button 
+        *ngFor="let theme of themeColors" 
+        class="theme-button"
+        [style.background]="'linear-gradient(135deg, ' + theme.primary + ' 0%, ' + theme.secondary + ' 100%)'"
+        (click)="applyTheme(theme); op.hide()">
+        <span class="theme-name">{{theme.name}}</span>
+      </button>
+    </div>
+  </p-overlayPanel>
+
+  <app-task-modal 
+    [isOpen]="isTaskModalOpen"
+    (closeModal)="toggleTaskModal()">
+  </app-task-modal>
+
+  <app-settings-modal
+    [isOpen]="isSettingsModalOpen"
+    (closeModal)="toggleSettingsModal()"
+    (saveSettings)="updateSettings($event)">
+  </app-settings-modal>
+</div>

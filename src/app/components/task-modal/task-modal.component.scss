@@ -1,0 +1,198 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  max-height: 90vh;
+  overflow-y: auto;
+  color: #333;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  background: white;
+  z-index: 1;
+
+  h2 {
+    margin: 0;
+    color: var(--theme-text-color);
+    font-size: clamp(1.2rem, 4vw, 1.5rem);
+  }
+}
+
+.close-button {
+  background: none;
+  border: none;
+  font-size: clamp(1.5rem, 5vw, 2rem);
+  cursor: pointer;
+  color: #666;
+  padding: 0.5rem;
+  margin: -0.5rem;
+  
+  &:hover {
+    color: var(--theme-text-color);
+  }
+}
+
+.tasks-container {
+  padding: clamp(1rem, 4vw, 1.5rem);
+}
+
+.add-task {
+  margin-bottom: clamp(1.2rem, 4vw, 1.5rem);
+  
+  input {
+    width: 100%;
+    padding: clamp(0.6rem, 3vw, 0.8rem);
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    font-size: clamp(0.9rem, 3.5vw, 1rem);
+
+    &:focus {
+      outline: none;
+      border-color: var(--theme-text-color);
+    }
+  }
+}
+
+.pomodoro-estimate {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.5rem, 2vw, 1rem);
+  margin-bottom: 1rem;
+  justify-content: center;
+
+  button {
+    background: var(--theme-text-color);
+    color: white;
+    border: none;
+    width: clamp(28px, 8vw, 30px);
+    height: clamp(28px, 8vw, 30px);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.2s, opacity 0.2s;
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    &:hover {
+      opacity: 0.9;
+      transform: scale(1.05);
+    }
+  }
+
+  span {
+    font-size: clamp(0.9rem, 3.5vw, 1rem);
+    color: #666;
+    min-width: 120px;
+    text-align: center;
+  }
+}
+
+.add-button {
+  width: 100%;
+  padding: clamp(0.7rem, 3vw, 0.8rem);
+  background: var(--theme-text-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: clamp(0.9rem, 3.5vw, 1rem);
+  transition: transform 0.2s, opacity 0.2s;
+  
+  &:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+  }
+}
+
+.task-list {
+  margin-top: clamp(1rem, 4vw, 1.5rem);
+
+  .task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: clamp(0.6rem, 3vw, 0.8rem);
+    border-bottom: 1px solid #eee;
+    gap: 1rem;
+    
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
+
+.task-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 0;
+  
+  input[type="checkbox"] {
+    accent-color: var(--theme-text-color);
+    width: clamp(16px, 4vw, 18px);
+    height: clamp(16px, 4vw, 18px);
+  }
+
+  span {
+    font-size: clamp(0.9rem, 3.5vw, 1rem);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    &.completed {
+      text-decoration: line-through;
+      color: #999;
+    }
+  }
+}
+
+.task-pomodoros {
+  display: flex;
+  align-items: center;
+  gap: clamp(0.5rem, 2vw, 1rem);
+  color: var(--theme-text-color);
+  font-size: clamp(0.9rem, 3.5vw, 1rem);
+  white-space: nowrap;
+}
+
+.delete-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: clamp(1.1rem, 4vw, 1.2rem);
+  opacity: 0.6;
+  transition: opacity 0.2s, color 0.2s;
+  padding: 0.5rem;
+  margin: -0.5rem;
+  
+  &:hover {
+    opacity: 1;
+    color: var(--theme-text-color);
+  }
+} 

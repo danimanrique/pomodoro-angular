@@ -1,0 +1,39 @@
+<div class="modal-overlay" *ngIf="isOpen" (click)="close()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>Configuración</h2>
+      <button class="close-button" (click)="close()">×</button>
+    </div>
+    
+    <div class="settings-container">
+      <div class="setting-group">
+        <label>Tiempo de Pomodoro (minutos)</label>
+        <div class="number-input">
+          <button (click)="settings.pomodoro = settings.pomodoro - 1" [disabled]="settings.pomodoro <= 1">-</button>
+          <input type="number" [(ngModel)]="settings.pomodoro" min="1" max="60">
+          <button (click)="settings.pomodoro = settings.pomodoro + 1" [disabled]="settings.pomodoro >= 60">+</button>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <label>Tiempo de Descanso Corto (minutos)</label>
+        <div class="number-input">
+          <button (click)="settings.shortBreak = settings.shortBreak - 1" [disabled]="settings.shortBreak <= 1">-</button>
+          <input type="number" [(ngModel)]="settings.shortBreak" min="1" max="30">
+          <button (click)="settings.shortBreak = settings.shortBreak + 1" [disabled]="settings.shortBreak >= 30">+</button>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <label>Tiempo de Descanso Largo (minutos)</label>
+        <div class="number-input">
+          <button (click)="settings.longBreak = settings.longBreak - 1" [disabled]="settings.longBreak <= 1">-</button>
+          <input type="number" [(ngModel)]="settings.longBreak" min="1" max="45">
+          <button (click)="settings.longBreak = settings.longBreak + 1" [disabled]="settings.longBreak >= 45">+</button>
+        </div>
+      </div>
+
+      <button class="save-button" (click)="save()">Guardar Cambios</button>
+    </div>
+  </div>
+</div> 

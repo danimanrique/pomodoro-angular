@@ -1,0 +1,42 @@
+<div class="modal-overlay" *ngIf="isOpen" (click)="close()">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <div class="modal-header">
+      <h2>Tareas Pendientes</h2>
+      <button class="close-button" (click)="close()">×</button>
+    </div>
+    
+    <div class="tasks-container">
+      <div class="add-task">
+        <input 
+          type="text" 
+          [(ngModel)]="newTaskTitle" 
+          placeholder="¿Qué vas a hacer?"
+          (keyup.enter)="addTask()"
+        >
+        <div class="pomodoro-estimate">
+          <button (click)="decreaseEstimate()">-</button>
+          <span>{{estimatedPomodoros}} pomodoros</span>
+          <button (click)="increaseEstimate()">+</button>
+        </div>
+        <button class="add-button" (click)="addTask()">Agregar Tarea</button>
+      </div>
+
+      <div class="task-list">
+        <div *ngFor="let task of tasks" class="task-item">
+          <div class="task-info">
+            <input 
+              type="checkbox" 
+              [checked]="task.completed"
+              (change)="toggleTask(task)"
+            >
+            <span [class.completed]="task.completed">{{task.title}}</span>
+          </div>
+          <div class="task-pomodoros">
+            <span>{{task.pomodorosCompleted}}/{{task.estimatedPomodoros}}</span>
+            <button class="delete-button" (click)="deleteTask(task)">🗑️</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> 
