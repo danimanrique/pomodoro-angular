@@ -1,6 +1,10 @@
 import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { themeColors } from '../../themes';
+import { ThemeColor } from '../../models/theme-color.interface';
+import { applyTheme } from '../../shared/applyTheme';
+import { ButtonModule } from 'primeng/button';
 
 interface TimerSettings {
   pomodoro: number;
@@ -11,7 +15,7 @@ interface TimerSettings {
 @Component({
   selector: 'app-settings-modal',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, ButtonModule],
   templateUrl: './settings-modal.component.html',
   styleUrls: ['./settings-modal.component.scss']
 })
@@ -19,6 +23,7 @@ export class SettingsModalComponent implements OnInit {
   @Input() isOpen = false;
   @Output() closeModal = new EventEmitter<void>();
   @Output() saveSettings = new EventEmitter<TimerSettings>();
+  public themeColors: ThemeColor[] = themeColors;
 
   settings: TimerSettings = {
     pomodoro: 25,
@@ -42,5 +47,9 @@ export class SettingsModalComponent implements OnInit {
 
   close() {
     this.closeModal.emit();
+  }
+
+  applyTheme(theme: ThemeColor) {
+    applyTheme(theme);
   }
 } 

@@ -7,6 +7,18 @@
     
     <div class="settings-container">
       <div class="setting-group">
+        <label>Color de Tema</label>
+        <div class="theme-colors">
+          <button 
+            *ngFor="let theme of themeColors" 
+            class="color-theme-button"
+            [style.background]="'linear-gradient(135deg, ' + theme.primary + ' 0%, ' + theme.secondary + ' 100%)'"
+            (click)="applyTheme(theme);">
+            <span class="theme-name">{{theme.name}}</span>
+          </button>
+        </div>
+      </div>
+      <div class="setting-group">
         <label>Tiempo de Pomodoro (minutos)</label>
         <div class="number-input">
           <button (click)="settings.pomodoro = settings.pomodoro - 1" [disabled]="settings.pomodoro <= 1">-</button>

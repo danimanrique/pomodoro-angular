@@ -148,3 +148,15 @@
     transform: scale(1.02);
   }
 } 
+
+.color-theme-button {
+  background: transparent;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 5px;
+  margin-right: 0.5rem;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
